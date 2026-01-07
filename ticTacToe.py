@@ -22,7 +22,23 @@ def display_board(board):
 def enter_move(board):
     # The function accepts the board's current status, asks the user about their move, 
     # checks the input, and updates the board according to the user's decision.
-    pass
+    while True:
+        try:
+            move = int(input("Enter your move (1-9): "))
+            if move < 1 or move > 9:
+                print("Invalid move.")
+                continue
+
+            for row in range(3):
+                for col in range(3):
+                    if board[row][col] == move:
+                        board[row][col] = 'O'
+                        return
+
+            print("That square is already taken.")
+
+        except ValueError:
+            print("Please enter a number.")
 
 def make_list_of_free_fields(board):
     # The function browses the board and builds a list of all the free squares; 
