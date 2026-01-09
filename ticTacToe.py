@@ -76,7 +76,10 @@ def victory_for(board, sign):
     return False
 
 def draw_move(board):
-    # The function draws the computer's move and updates the board.
-    pass
+# The function draws the computer's move and updates the board.
+    free_fields = make_list_of_free_fields(board)
+    if free_fields:
+        row, col = random.choice(free_fields)
+        board[row][col] = 'X'
 
-display_board(board)
+#display_board(board)
