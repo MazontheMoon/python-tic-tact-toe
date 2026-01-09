@@ -82,4 +82,25 @@ def draw_move(board):
         row, col = random.choice(free_fields)
         board[row][col] = 'X'
 
-#display_board(board)
+# Start gameplay
+display_board(board)
+
+while True:
+    enter_move(board)
+    display_board(board)
+
+    if victory_for(board, 'O'):
+        print("You're a Winner!")
+        break
+
+    if not make_list_of_free_fields(board):
+        print("It's a draw!")
+        break
+
+    #Computer Move
+    draw_move(board)
+    display_board(board)
+
+    if victory_for(board, 'X'):
+        print("Computer wins!")
+        break
