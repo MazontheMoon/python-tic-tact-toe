@@ -55,7 +55,25 @@ def make_list_of_free_fields(board):
 def victory_for(board, sign):
     # The function analyzes the board's status in order to check if 
     # the player using 'O's or 'X's has won the game
-    pass
+    
+    # Rows
+    for row in board:
+        if row == [sign, sign, sign]:
+            return True
+
+    # Columns
+    for col in range(3):
+        if board[0][col] == sign and board[1][col] == sign and board[2][col] == sign:
+            return True
+
+    # Diagonals
+    if board[0][0] == sign and board[1][1] == sign and board[2][2] == sign:
+        return True
+
+    if board[0][2] == sign and board[1][1] == sign and board[2][0] == sign:
+        return True
+
+    return False
 
 def draw_move(board):
     # The function draws the computer's move and updates the board.
